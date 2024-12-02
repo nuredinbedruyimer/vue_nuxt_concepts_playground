@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Contact Page</h1>
+    <h1>Search Result Page</h1>
   </div>
 </template>
 

@@ -1,23 +1,58 @@
 <template>
-  <div class="bg-white">
-    <header>
-      <nav class="flex justify-between container p-4 mx-auto">
-        <div>
-          <h1 class="text-3xl text-purple-800 font-extrabold">NameHere</h1>
+  <div>
+    <header class="mx-auto text-white p-4 container bg-orange-400">
+      <div class="container mx-auto flex justify-between items-center">
+        <!-- Logo and Home Link -->
+        <div class="text-2xl font-semibold">
+          <NuxtLink to="/" class="text-white hover:text-gray-300"
+            >Recipe Finder</NuxtLink
+          >
         </div>
-        <div class="flex justify-between items-center gap-12">
-          <NuxtLink to="/" class="text-red-700">Home</NuxtLink>
-          <NuxtLink to="/about">About</NuxtLink>
-          <NuxtLink to="/services">Services</NuxtLink>
 
-          <button class="px-6 py-2 border-2 border-black">
-            <NuxtLink to="/contact">Contact</NuxtLink>
-          </button>
-        </div>
-      </nav>
+        <!-- Navigation Links -->
+        <nav class="space-x-6 text-md font-extrabold capitalize">
+          <NuxtLink to="/" class="text-white hover:text-gray-300"
+            >Home</NuxtLink
+          >
+          <NuxtLink to="/profile" class="text-white hover:text-gray-300"
+            >Profile</NuxtLink
+          >
+          <NuxtLink to="/categories" class="text-white hover:text-gray-300"
+            >Categories</NuxtLink
+          >
+          <NuxtLink to="/favorites" class="text-white hover:text-gray-300"
+            >Favorites</NuxtLink
+          >
+          <NuxtLink to="/login" class="text-white hover:text-gray-300"
+            >Login</NuxtLink
+          >
+        </nav>
+      </div>
     </header>
-    <main>
-      <NuxtPage />
-    </main>
+    <slot />
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      searchQuery: "",
+    };
+  },
+  methods: {
+    searchRecipes() {
+      if (this.searchQuery.trim()) {
+        this.$router.push({
+          path: "/search",
+          query: { query: this.searchQuery },
+        });
+      }
+    },
+  },
+};
+</script>
+
+<style scoped>
+/* Tailwind styles are enough for this layout */
+</style>
