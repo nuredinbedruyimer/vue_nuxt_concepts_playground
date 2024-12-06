@@ -1,3 +1,5 @@
+<script setup lang="ts"></script>
+
 <template>
   <div>
     <Hero />
@@ -6,3 +8,6 @@
     <RecipeList />
   </div>
 </template>
+<script setup>
+const { x, y } = useMouse();
+</script>
