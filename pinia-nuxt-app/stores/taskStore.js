@@ -31,8 +31,32 @@ export const useTaskStore = defineStore("taskStore", {
     ],
   }),
   getters: {
-    favorites() {
+    allTasks() {
+      return this.tasks;
+    },
+    tasksCount(this) {
+      return this.tasks.length;
+    },
+    favorites(this) {
       return this.tasks.filter((task) => task.isFav);
+    },
+    favCount(this) {
+      return this.tasks.filter((task) => task.isFav).length;
+    },
+  },
+  actions: {
+    addTask(taskName) {
+      console.log("Tas Name : ", taskName);
+      const task = {
+        id: this.tasks.length + 1,
+        title: taskName,
+        isFav: false,
+      };
+      this.tasks.push(task);
+    },
+    removeTask(id) {
+      this.tasks= this.tasks.filter((task) => task.id !== id);
+      console.log(this.tasks);
     },
   },
 });
